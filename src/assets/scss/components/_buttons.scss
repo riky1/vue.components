@@ -1,0 +1,155 @@
+// Variabili per l'opacità dello state layer (possono essere affinate)
+$btn-hover-state-opacity: 0.08;  // Opacità per lo stato hover
+$btn-focus-state-opacity: 0.12;  // Opacità per lo stato focus
+$btn-active-state-opacity: 0.10; // Opacità per lo stato active/pressed (Material Design usa 0.10)
+
+// --- Classe Base per i Bottoni ---
+.btn {
+  // Stili fondamentali
+  display: inline-flex;           // Permette di allineare icona e testo facilmente
+  align-items: center;            // Allinea verticalmente il contenuto
+  justify-content: center;        // Allinea orizzontalmente il contenuto
+  padding: 0.625rem 1.25rem;      // ~10px vertical, 20px horizontal padding
+  font-family: inherit;           // Eredita il font dal contesto
+  font-size: 0.875rem;            // ~14px
+  font-weight: 500;               // Medium weight, comune per i bottoni
+  line-height: 1.5;               // Standard line height
+  text-align: center;
+  text-decoration: none;          // Rimuove la sottolineatura dai link usati come bottoni
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;              // Impedisce la selezione del testo del bottone
+  background-color: transparent;  // Sfondo di base, sarà sovrascritto dai modificatori
+  border: 1px solid transparent;  // Bordo di base, sarà sovrascritto
+  border-radius: 1.25rem;         // ~20px, per un look "pill" o completamente arrotondato (Material Design style)
+                                  // Adatto per un'altezza di bottone di circa 40px
+
+  // Necessari per lo state layer e potenziali effetti ripple
+  position: relative;
+  overflow: hidden;                   // Maschera lo state layer se esce dai bordi arrotondati
+
+  // Elevazione e trasformazione di scala di default
+  box-shadow: var(--v-elevation-3);   // Elevazione a riposo (come da tua definizione precedente)
+  transform: scale(1);                // Scala normale
+
+// Transizioni per un feedback fluido
+  // Usiamo cubic-bezier per un feeling più "Material"
+  transition:
+    background-color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    color 0.2s ease-out,
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), // Easing standard Material per l'elevazione
+    transform 0.15s cubic-bezier(0.4, 0, 1, 1);   // Easing standard Material per la scala
+
+  // State Layer (implementato con un pseudo-elemento ::before)
+  // Questo layer si sovrappone al colore di sfondo del bottone per indicare gli stati
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // Il colore di sfondo dello state layer sarà il colore del testo del bottone
+    // (es. --v-color-on-primary per un bottone primario)
+    background-color: currentColor;
+    opacity: 0; // Inizialmente invisibile
+    transition: opacity 0.2s ease-out; // Transizione per l'opacità
+    pointer-events: none; // Non deve intercettare gli eventi del mouse
+    border-radius: inherit; // Assicura che lo state layer segua il border-radius del bottone
+  }
+
+  // --- Stati Comuni ---
+
+  // Stili condivisi per :hover e :focus-visible (per accessibilità da tastiera)
+  &:hover,
+  &:focus-visible {
+    text-decoration: none; // Manteniamo la rimozione della sottolineatura
+    box-shadow: var(--v-elevation-4); // Elevazione per hover/focus (come da tua definizione)
+  }
+
+  // State layer per :hover
+  &:hover::before {
+    opacity: $btn-hover-state-opacity;
+  }
+
+  // Rimuove l'outline di default del browser se gestiamo il focus custom
+  &:focus {
+    outline: none;
+  }
+
+  // Stili specifici per :focus-visible (focus da tastiera)
+  &:focus-visible {
+    // Aggiunge un anello di focus esplicito per una migliore accessibilità
+    outline: 2px solid var(--v-color-outline); // Usa un colore di outline neutro e visibile
+    outline-offset: 2px;                       // Spazio tra bottone e anello di focus
+    &::before {
+      opacity: $btn-focus-state-opacity; // Opacità specifica per lo state layer in focus
+    }
+  }
+
+  // Stato :active (quando il bottone è premuto)
+  &:active {
+    box-shadow: var(--v-elevation-2); // Elevazione per stato premuto (come da tua definizione)
+    transform: scale(0.97);           // Leggera riduzione di scala per feedback tattile
+    &::before {
+      opacity: $btn-active-state-opacity; // Opacità specifica per lo state layer premuto
+    }
+  }
+
+  // Stato :disabled (bottone disabilitato)
+  &:disabled,
+  &.disabled { // Permette di usare anche una classe .disabled
+    // Usa i colori neutri del tema scuro per lo stato disabilitato
+    background-color: var(--v-color-surface-variant);
+    color: var(--v-color-on-surface-variant);
+    border-color: var(--v-color-surface-variant); // Bordo che matcha lo sfondo disabilitato
+    opacity: 0.75; // Leggermente più visibile di un semplice opacity sul testo
+    cursor: not-allowed;
+    pointer-events: none; // Impedisce qualsiasi interazione
+    box-shadow: none;     // Nessuna elevazione quando disabilitato
+    transform: scale(1);  // Resetta la scala
+    &::before {
+      opacity: 0; // Nessuno state layer quando disabilitato
+    }
+  }
+
+  // --- Elementi BEM interni al bottone ---
+
+  // Elemento per l'icona (es. <span class="btn__icon">...</span>)
+  &__icon {
+    margin-right: 0.5em;     // Spazio tra icona e testo
+    display: inline-flex;    // Utile per l'allineamento verticale dell'icona
+    align-items: center;
+    // Le icone SVG potrebbero necessitare di fill: currentColor; o width/height specifici
+  }
+
+  // Elemento per il testo (es. <span class="btn__text">...</span>)
+  // Utile se si vuole dare uno stile specifico solo al testo
+  // &__text {
+  //   // display: inline-block; // o span
+  // }
+}
+
+// --- Modificatore per Bottone Primario (.btn--primary) ---
+.btn--primary {
+  background-color: var(--v-color-primary);
+  border-color: var(--v-color-primary);
+  // Il colore del testo (on-primary) sarà usato anche per lo state layer (grazie a background-color: currentColor in ::before)
+  color: var(--v-color-on-primary);
+
+  // Opzionale: se il bottone primario necessita di un anello di focus con un colore diverso
+  // &:focus-visible {
+  //   outline-color: var(--v-color-primary-light); // Esempio: usa una variante chiara del primario
+  // }
+
+  // Opzionale: se lo stato disabilitato del bottone primario deve essere diverso da quello base
+  // &:disabled,
+  // &.disabled {
+  //   // Esempio di stile disabilitato specifico per il primario (più vicino a Material Design 3)
+  //   // Richiederebbe --v-color-on-surface-rgb o --v-color-primary-rgb definite in _root.scss
+  //   // background-color: rgba(var(--v-color-on-surface-rgb, 31, 41, 55), 0.12); // Sfondo con on-surface al 12%
+  //   // color: rgba(var(--v-color-on-surface-rgb, 31, 41, 55), 0.38);            // Testo con on-surface al 38%
+  //   // border-color: transparent;
+  // }
+}
