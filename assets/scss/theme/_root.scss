@@ -1,0 +1,49 @@
+:root {
+  // --- Tavolozza Primaria (Basata su #075985) ---
+  --v-color-primary: #075985; // Colore primario principale
+  --v-color-on-primary: #f0f9ff; // Testo/icone su colore primario
+  --v-color-primary-container: #cffafe; // Contenitore con colore primario (più chiaro, es. sky-100)
+  --v-color-on-primary-container: #083344; // Testo/icone su contenitore primario (es. sky-900)
+  --v-color-primary-light: #0ea5e9; // Variante più chiara del primario (es. sky-500)
+  --v-color-primary-dark: #082f49; // Variante più scura del primario (es. sky-900)
+
+  // --- Tavolozza Secondaria (Teal/Ciano - analogo) ---
+  --v-color-secondary: #0d9488; // Colore secondario principale (es. teal-600)
+  --v-color-on-secondary: #f0f9ff; // Testo/icone su colore secondario
+  --v-color-secondary-container: #ccfbf1; // Contenitore con colore secondario (più chiaro, es. teal-100)
+  --v-color-on-secondary-container: #0f766e; // Testo/icone su contenitore secondario (es. teal-700)
+  --v-color-secondary-light: #2dd4bf; // Variante più chiara del secondario (es. teal-400)
+  --v-color-secondary-dark: #115e59; // Variante più scura del secondario (es. teal-800)
+
+  // --- Tavolozza Terziaria (Ambra/Oro - contrasto caldo) ---
+  --v-color-tertiary: #f59e0b; // Colore terziario principale (es. amber-500)
+  --v-color-on-tertiary: #422006; // Testo/icone su colore terziario (marrone scuro)
+  --v-color-tertiary-container: #fef3c7; // Contenitore con colore terziario (più chiaro, es. amber-100)
+  --v-color-on-tertiary-container: #78350f; // Testo/icone su contenitore terziario (es. amber-800)
+  --v-color-tertiary-light: #fcd34d; // Variante più chiara del terziario (es. amber-300)
+  --v-color-tertiary-dark: #b45309; // Variante più scura del terziario (es. amber-700)
+
+  // --- Tavolozza Neutra (Tema Scuro) ---
+  --v-color-background: #111827; // Sfondo generale dell'applicazione (es. Tailwind gray-900)
+  --v-color-on-background: #f3f4f6; // Testo/icone su sfondo generale (es. Tailwind gray-100)
+  --v-color-surface: #1f2937; // Superfici di componenti (pannelli, card, dialoghi) (es. Tailwind gray-800)
+  --v-color-on-surface: #e5e7eb; // Testo/icone su superfici (es. Tailwind gray-200)
+  --v-color-surface-variant: #374151; // Variante di superficie (es. Tailwind gray-700)
+  --v-color-on-surface-variant: #d1d5db; // Testo/icone su variante di superficie (es. Tailwind gray-300)
+  --v-color-outline: #4b5563; // Bordi principali (es. Tailwind gray-600)
+  --v-color-outline-variant: #374151; // Bordi più leggeri o divisori (es. Tailwind gray-700)
+  --v-color-shadow: #000000; // Colore per le ombre
+  --v-color-scrim: rgba(0, 0, 0, 0.5); // Overlay per modali, ecc.
+
+  // --- Tavolozza Errori (Rossi) ---
+  --v-color-error: #dc2626; // Colore per stati di errore (es. red-600)
+  --v-color-on-error: #FFFFFF; // Testo/icone su colore di errore
+  --v-color-error-container: #fee2e2; // Contenitore per messaggi di errore (più chiaro, es. red-100)
+  --v-color-on-error-container: #991b1b; // Testo/icone su contenitore di errore (es. red-800)
+
+  // Livelli di elevazione Material Design 3 (semplificati)
+  --v-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --v-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15); // Premuto
+  --v-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15); // Riposo
+  --v-elevation-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15); // Hover/Focus
+}
