@@ -22,9 +22,8 @@ export default defineConfig({
         // Nota: `@use` è preferito a `@import`
         // L'uso di 'as *' qui li renderà disponibili senza namespace
         additionalData: `
-          @use "@/assets/scss/utils/breakpoints" as *;
-          @use "@/assets/scss/utils/functions" as *;
           @use "@/assets/scss/utils/responsive" as *;
+          @use "@/assets/scss/layout/mixins" as *;
         `
         // Se non vuoi usare 'as *', dovrai usare i namespace nei tuoi componenti,
         // es: additionalData: `@use "@/assets/scss/utils/responsive" as r;`

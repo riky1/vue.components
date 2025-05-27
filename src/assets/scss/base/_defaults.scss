@@ -1,4 +1,18 @@
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased; // Migliora la resa dei font su WebKit/Blink
+  -moz-osx-font-smoothing: grayscale;  // Migliora la resa dei font su Firefox
+  // Considera di impostare qui la dimensione base del font se vuoi che 1rem sia diverso da 16px
+  // font-size: 100%; // Default
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
 body {
+  font-family: 'kanchenjunga', sans-serif;
   margin: 0;
   padding: 0;
 }
