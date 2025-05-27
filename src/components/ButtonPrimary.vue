@@ -47,5 +47,11 @@ const buttonType = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-
+.btn__text {
+  font-size: 0.875rem;
+  
+  @include media-query(sm) {
+    font-size: 1rem;
+  }
+}
 </style>

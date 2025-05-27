@@ -1,0 +1,35 @@
+// c:\_dev\vue.components\src\assets\scss\utils\_responsive.scss
+
+@use 'sass:map';
+@use './breakpoints' as b; // Importa i breakpoint dalla stessa cartella utils/
+@use './functions' as f;   // Importa le funzioni dalla stessa cartella utils/
+
+@mixin media-query($breakpoint, $type: min) {
+  // Accedi alla mappa $breakpoints definita in _breakpoints.scss
+  // (sarà disponibile come b.$breakpoints se usi il namespace,
+  // o direttamente $breakpoints se fai @use './breakpoints' as *;)
+  // Per semplicità, assumiamo che $breakpoints sia globale dopo l'import in main.scss
+  // o che tu faccia @use './breakpoints' as *; qui.
+  // Se usi il namespace 'b', allora sarà map.get(b.$breakpoints, $breakpoint)
+  $px-value: map.get(b.$breakpoints, $breakpoint);
+
+  @if $px-value == null {
+    @error "❌ Breakpoint `#{$breakpoint}` non definito nella mappa $breakpoints.";
+  }
+
+  $em-value: f.px-to-em($px-value);
+
+  @if $type == min {
+    @media only screen and (min-width: $em-value) {
+      @content;
+    }
+  } @else if $type == max {
+    // Per max-width, sottraiamo un valore infinitesimale per evitare sovrapposizioni
+    // con un min-width dello stesso valore. Assicurati che la sottrazione sia tra valori con la stessa unità.
+    @media only screen and (max-width: ($em-value - 0.001em)) { // Corretto: 0.001em invece di 0.005 (senza unità)
+      @content;
+    }
+  } @else {
+    @error "❌ Tipo `#{$type}` non supportato per il mixin media-query. Usa `min` o `max`.";
+  }
+}

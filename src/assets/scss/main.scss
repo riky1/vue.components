@@ -1,4 +1,11 @@
 @use './base/normalize';
+@use './base/defaults';
+
+@use './utils/breakpoints'; // Definisce i breakpoint
+@use './utils/functions';   // Definisce le funzioni (px-to-em, px-to-rem)
+@use './utils/responsive' as *;  // Definisce il mixin media-query (e altri futuri)
+
+@use './layout/mixins';
 
 @use './theme/root' as *;
 @use './components/buttons';

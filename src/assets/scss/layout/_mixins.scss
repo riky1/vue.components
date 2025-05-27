@@ -1,0 +1,7 @@
+@mixin component-wrapper() {
+  padding-inline: 1.5rem;
+
+  // @include media-query(m) {
+  //   padding: 30px 35px;
+  // }
+}
