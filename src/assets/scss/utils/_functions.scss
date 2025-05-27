@@ -4,20 +4,20 @@
 $browser-context: 16; // Default browser font size in pixels for rem/em calculations
 
 @function px-to-em($pixels, $context: $browser-context) {
-  @if unitless($pixels) {
+  @if math.is-unitless($pixels) {
     $pixels: $pixels * 1px; // Add unit if missing
   }
-  @if unitless($context) {
+  @if math.is-unitless($context) {
     $context: $context * 1px; // Add unit if missing
   }
   @return math.div($pixels, $context) * 1em;
 }
 
 @function px-to-rem($pixels, $context: $browser-context) {
-  @if unitless($pixels) {
+  @if math.is-unitless($pixels) {
     $pixels: $pixels * 1px; // Add unit if missing
   }
-  @if unitless($context) {
+  @if math.is-unitless($context) {
     $context: $context * 1px; // Add unit if missing for consistent division
   }
   // REMs are relative to the root font-size, so context is typically the browser default

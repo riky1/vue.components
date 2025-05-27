@@ -1,45 +1,71 @@
 :root {
   // --- Tavolozza Primaria (Basata su #075985) ---
   --v-color-primary: #075985; // Colore primario principale
+  --v-color-primary-rgb: 7, 89, 133;
   --v-color-on-primary: #f0f9ff; // Testo/icone su colore primario
+  --v-color-on-primary-rgb: 240, 249, 255;
   --v-color-primary-container: #cffafe; // Contenitore con colore primario (più chiaro, es. sky-100)
+  --v-color-primary-container-rgb: 207, 250, 254;
   --v-color-on-primary-container: #083344; // Testo/icone su contenitore primario (es. sky-900)
+  --v-color-on-primary-container-rgb: 8, 51, 68;
   --v-color-primary-light: #0ea5e9; // Variante più chiara del primario (es. sky-500)
   --v-color-primary-dark: #082f49; // Variante più scura del primario (es. sky-900)
 
+
   // --- Tavolozza Secondaria (Teal/Ciano - analogo) ---
   --v-color-secondary: #0d9488; // Colore secondario principale (es. teal-600)
+  --v-color-secondary-rgb: 13, 148, 136;
   --v-color-on-secondary: #f0f9ff; // Testo/icone su colore secondario
+  --v-color-on-secondary-rgb: 240, 249, 255;
   --v-color-secondary-container: #ccfbf1; // Contenitore con colore secondario (più chiaro, es. teal-100)
+  --v-color-secondary-container-rgb: 204, 251, 241;
   --v-color-on-secondary-container: #0f766e; // Testo/icone su contenitore secondario (es. teal-700)
+  --v-color-on-secondary-container-rgb: 15, 118, 110;
   --v-color-secondary-light: #2dd4bf; // Variante più chiara del secondario (es. teal-400)
   --v-color-secondary-dark: #115e59; // Variante più scura del secondario (es. teal-800)
 
+
   // --- Tavolozza Terziaria (Ambra/Oro - contrasto caldo) ---
   --v-color-tertiary: #f59e0b; // Colore terziario principale (es. amber-500)
+  --v-color-tertiary-rgb: 245, 158, 11;
   --v-color-on-tertiary: #422006; // Testo/icone su colore terziario (marrone scuro)
+  --v-color-on-tertiary-rgb: 66, 32, 6;
   --v-color-tertiary-container: #fef3c7; // Contenitore con colore terziario (più chiaro, es. amber-100)
+  --v-color-tertiary-container-rgb: 254, 243, 199;
   --v-color-on-tertiary-container: #78350f; // Testo/icone su contenitore terziario (es. amber-800)
+  --v-color-on-tertiary-container-rgb: 120, 53, 15;
   --v-color-tertiary-light: #fcd34d; // Variante più chiara del terziario (es. amber-300)
   --v-color-tertiary-dark: #b45309; // Variante più scura del terziario (es. amber-700)
 
   // --- Tavolozza Neutra (Tema Scuro) ---
   --v-color-background: #111827; // Sfondo generale dell'applicazione (es. Tailwind gray-900)
+  --v-color-background-rgb: 17, 24, 39;
   --v-color-on-background: #f3f4f6; // Testo/icone su sfondo generale (es. Tailwind gray-100)
+  --v-color-on-background-rgb: 243, 244, 246;
   --v-color-surface: #1f2937; // Superfici di componenti (pannelli, card, dialoghi) (es. Tailwind gray-800)
+  --v-color-surface-rgb: 31, 41, 55;
   --v-color-on-surface: #e5e7eb; // Testo/icone su superfici (es. Tailwind gray-200)
+  --v-color-on-surface-rgb: 229, 231, 235; // RGB per #e5e7eb (Tailwind gray-200)
   --v-color-surface-variant: #374151; // Variante di superficie (es. Tailwind gray-700)
+  --v-color-surface-variant-rgb: 55, 65, 81;
   --v-color-on-surface-variant: #d1d5db; // Testo/icone su variante di superficie (es. Tailwind gray-300)
+  --v-color-on-surface-variant-rgb: 209, 213, 219;
   --v-color-outline: #4b5563; // Bordi principali (es. Tailwind gray-600)
+  --v-color-outline-rgb: 75, 85, 99;
   --v-color-outline-variant: #374151; // Bordi più leggeri o divisori (es. Tailwind gray-700)
   --v-color-shadow: #000000; // Colore per le ombre
+  --v-color-shadow-rgb: 0, 0, 0;
   --v-color-scrim: rgba(0, 0, 0, 0.5); // Overlay per modali, ecc.
 
   // --- Tavolozza Errori (Rossi) ---
   --v-color-error: #dc2626; // Colore per stati di errore (es. red-600)
+  --v-color-error-rgb: 220, 38, 38;
   --v-color-on-error: #FFFFFF; // Testo/icone su colore di errore
+  --v-color-on-error-rgb: 255, 255, 255;
   --v-color-error-container: #fee2e2; // Contenitore per messaggi di errore (più chiaro, es. red-100)
+  --v-color-error-container-rgb: 254, 226, 226;
   --v-color-on-error-container: #991b1b; // Testo/icone su contenitore di errore (es. red-800)
+  --v-color-on-error-container-rgb: 153, 27, 27;
 
   // Livelli di elevazione Material Design 3 (semplificati)
   --v-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);

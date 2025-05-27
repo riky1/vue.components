@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.2",
     "normalize.css": "^8.0.1",
     "vue": "^3.5.13"
   },
