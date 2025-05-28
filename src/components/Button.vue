@@ -24,7 +24,6 @@ const props = defineProps({
   disabled: {
     type: Boolean
   },
-  // Potresti volere una prop per l'icona
   // icon: String,
   variant: { // Prop per definire la variante del bottone
     type: String,
@@ -77,7 +76,7 @@ const hasVisibleTextContent = computed(() => {
 const buttonClasses = computed(() => {
   const baseClasses = ['btn', `btn--${props.variant}`]; // Applica la classe base e la classe della variante
 
-  if (props.size && props.size !== 'md') { // Aggiungi la classe per la dimensione solo se non è 'md' (default)
+  if (props.size && props.size !== 'md') { // Aggiunge la classe per la dimensione solo se non è 'md' (default)
     baseClasses.push(`btn--${props.size}`);
   }
 
@@ -126,7 +125,6 @@ function handleClick(event) {
     v-bind="$attrs"
     @click="handleClick"
   >
-    <!-- Esempio con slot per icona e testo -->
     <span v-if="hasIcon" class="btn__icon">
       <slot v-if="$slots.icon" name="icon"></slot>
       <SvgIcon

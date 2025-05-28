@@ -45,6 +45,7 @@ $btn-font-size-lg: 1rem;     // ~16px
   // Elevazione e trasformazione di scala di default
   box-shadow: var(--v-elevation-3);   // Elevazione a riposo (come da tua definizione precedente)
   transform: scale(1);                // Scala normale
+  will-change: transform, box-shadow; // Fixa il movimento verso l'alto dell'icona all pressione del button
 
   // Transizioni per un feedback fluido
   // Usiamo cubic-bezier per un feeling più "Material"
@@ -111,6 +112,7 @@ $btn-font-size-lg: 1rem;     // ~16px
   &:active {
     box-shadow: var(--v-elevation-2); // Elevazione per stato premuto (come da tua definizione)
     transform: scale(0.97);           // Leggera riduzione di scala per feedback tattile
+
     &::before {
       opacity: $btn-active-state-opacity; // Opacità specifica per lo state layer premuto
     }
@@ -141,8 +143,10 @@ $btn-font-size-lg: 1rem;     // ~16px
   // Elemento per l'icona (es. <span class="btn__icon">...</span>)
   &__icon {
     // margin-right: 0.5em;     // Spazio tra icona e testo
-    display: inline-flex;    // Utile per l'allineamento verticale dell'icona
+    display: inline-flex;       // Utile per l'allineamento verticale dell'icona
     align-items: center;
+    position: relative;
+    top: 1px;                   // necessario per lo scostamento dovuto a will-change
     // Le icone SVG potrebbero necessitare di fill: currentColor; o width/height specifici
   }
 
