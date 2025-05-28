@@ -1,0 +1,166 @@
+@use './buttons-variables' as *;
+
+/* 
+ * SECTION
+ * Modificatore per Bottone Primario (.btn--primary)
+ */
+
+.btn--primary {
+  background-color: var(--vc-color-primary);
+  border-color: var(--vc-color-primary);
+  // Il colore del testo (on-primary) sarà usato anche per lo state layer (grazie a background-color: currentColor in ::before)
+  color: var(--vc-color-on-primary);
+
+  // Stato disabilitato specifico per il primario (Material Design 3 per bottoni "filled")
+  &:disabled,
+  &.disabled {
+    background-color: rgba(var(--v-color-on-surface-rgb), 0.12);
+    color: rgba(var(--v-color-on-surface-rgb), 0.38);
+    border-color: transparent;
+  }
+}
+// !SECTION
+
+/* 
+ * SECTION
+ * Modificatore per Bottone Primario COntainer (.btn--primary-container)
+ */
+
+.btn--primary-container {
+  background-color: var(--v-color-primary-container);
+  border-color: var(--v-color-primary-container);
+  // Il colore del testo (on-primary) sarà usato anche per lo state layer (grazie a background-color: currentColor in ::before)
+  color: var(--v-color-on-primary-container);
+
+  // Opzionale: se il bottone primario necessita di un anello di focus con un colore diverso
+  // &:focus-visible {
+  //   outline-color: var(--v-color-primary-light); // Esempio: usa una variante chiara del primario
+  // }
+
+  // Stato disabilitato specifico per il primario (Material Design 3 per bottoni "filled")
+  &:disabled,
+  &.disabled {
+    background-color: rgba(var(--v-color-on-surface-rgb), 0.12);
+    color: rgba(var(--v-color-on-surface-rgb), 0.38);
+    border-color: transparent;
+  }
+}
+// !SECTION
+
+/*
+ * SECTION
+ * Modificatore per Bottone Secondario/Outlined (.btn--secondary)
+ */
+.btn--secondary {
+  // Il colore del testo (primary) sarà usato anche per lo state layer
+  color: var(--v-color-secondary);
+  background-color: transparent;
+  border-color: var(--v-color-outline); // Bordo standard per outlined
+
+  // Per lo stato disabilitato, potremmo voler solo sbiadire il bordo e il testo
+  &:disabled,
+  &.disabled {
+    // Per bottoni outlined/text, il testo e il bordo (se presente) usano on-surface con opacità 0.38
+    color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.38);
+    border-color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.12); // Bordo con on-surface al 12%
+    background-color: transparent;
+  }
+}
+// !SECTION
+
+/*
+ * SECTION
+ * Modificatore per Bottone Terziario/Text (.btn--text)
+ */
+.btn--text {
+  // Il colore del testo (primary) sarà usato anche per lo state layer
+  color: var(--v-color-primary);
+  background-color: transparent;
+  border-color: transparent;
+  padding-left: 0.75rem; // Meno padding orizzontale per i text button
+  padding-right: 0.75rem;
+
+  // Per lo stato disabilitato
+  &:disabled,
+  &.disabled {
+    color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.38);
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+// !SECTION
+
+/*
+ * SECTION
+ * Modificatore per Bottone Tonal (.btn--tonal)
+ */
+.btn--tonal {
+  background-color: var(--v-color-secondary-container);
+  // Il colore del testo (on-secondary-container) sarà usato anche per lo state layer
+  color: var(--v-color-on-secondary-container);
+  border-color: transparent;
+
+  // Per lo stato disabilitato
+  &:disabled,
+  &.disabled {
+    // Material Design 3 suggerisce on-surface al 12% per lo sfondo e on-surface al 38% per il testo
+    background-color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.12);
+    color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.38);
+    border-color: transparent;
+  }
+}
+// !SECTION
+
+/*
+ * SECTION
+ * Modificatore per Bottone con tema Terziario (.btn--tertiary)
+ */
+.btn--tertiary {
+  background-color: var(--v-color-tertiary);
+  color: var(--v-color-on-tertiary); // Usato per testo e state layer
+  border-color: transparent; // O var(--v-color-tertiary-dark) per un bordo sottile
+
+  // Lo state layer (::before) userà 'currentColor' (cioè --v-color-on-tertiary)
+  // per il suo background, come definito negli stili base .btn
+
+  &:disabled,
+  &.disabled {
+    // Stile disabilitato per bottoni filled (Material Design 3)
+    // Usa --v-color-on-surface-rgb che dovresti aver definito in _root.scss
+    // Se --v-color-on-surface-rgb non è disponibile, usa un fallback o un approccio più semplice.
+    background-color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.12);
+    color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.38);
+     
+    border-color: transparent;
+    // box-shadow e cursor sono già gestiti dagli stili :disabled di .btn base
+  }
+}
+
+// !SECTION
+
+/*
+ * SECTION
+ * Modificatori per le Dimensioni dei Bottoni
+ */
+
+.btn--sm {
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  font-size: $btn-font-size-sm;
+  // Opzionale: aggiustare il border-radius se l'altezza cambia significativamente
+  // border-radius: 1rem; // Esempio per un bottone più piccolo
+
+  // Per i text button piccoli, potrebbe essere necessario un padding orizzontale ancora minore
+  &.btn--text {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.btn--lg {
+  padding: $btn-padding-y-lg $btn-padding-x-lg;
+  font-size: $btn-font-size-lg;
+  // Opzionale: aggiustare il border-radius
+  // border-radius: 1.5rem; // Esempio per un bottone più grande
+}
+
+// !SECTION

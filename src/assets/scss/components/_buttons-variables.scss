@@ -1,0 +1,13 @@
+// Variabili per l'opacità dello state layer (possono essere affinate)
+$btn-hover-state-opacity: 0.08;  // Opacità per lo stato hover
+$btn-focus-state-opacity: 0.12;  // Opacità per lo stato focus
+$btn-active-state-opacity: 0.10; // Opacità per lo stato active/pressed (Material Design usa 0.10)
+
+// Variabili per le dimensioni dei bottoni
+$btn-padding-y-sm: 0.375rem; // ~6px
+$btn-padding-x-sm: 1rem;    // ~16px
+$btn-font-size-sm: 0.75rem;  // ~12px
+
+$btn-padding-y-lg: 0.875rem; // ~14px
+$btn-padding-x-lg: 1.75rem;  // ~28px
+$btn-font-size-lg: 1rem;     // ~16px

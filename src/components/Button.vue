@@ -1,50 +1,91 @@
 <script setup>
 import { computed, useSlots, Comment, Text, Fragment } from 'vue';
 
-// TODO: loading, fullWidth o Block, to per vue router
+// TODO: loading, fullWidth o Block, "to" per vue router
 
+// Può essere 'button', 'a', o un router-link tag
 const props = defineProps({
   tag: {
     type: String,
-    default: 'button', // Può essere 'button', 'a', o un router-link tag
+    default: 'button', 
   },
-  href: { // Per quando tag è 'a'
+
+  // Per quando tag è 'a'
+  href: { 
     type: String,
     default: null,
   },
-  target: { // Per quando tag è 'a', es. '_blank'
+
+   // Per quando tag è 'a', es. '_blank'
+  target: {
     type: String,
     default: null,
   },
-  ariaLabel: { // Per l'accessibilità, specialmente per bottoni solo icona
+
+  // Prop per l'attributo 'type' del tag <button> (es. 'button', 'submit', 'reset')
+  type: {
+    type: String,
+    default: 'button', 
+    validator: (value) => ['button', 'submit', 'reset'].includes(value),
+  },
+
+  // Per l'accessibilità, specialmente per bottoni solo icona
+  ariaLabel: { 
     type: String,
     default: null,
   },
-  // Altre props come href, to, type, disabled, ecc.
+
+  // Prop per la dimensione del bottone
+  // TODO: xs, xl
+  size: { 
+    type: String,
+    default: 'md', 
+    validator: (value) => ['xs','sm', 'md', 'lg', 'xl'].includes(value),
+  },
+
+  // Prop per i border-radius del bottone
+  // TODO
+  shape: { 
+    type: String,
+    default: 'rounded',
+    validator: (value) => ['rounded', 'square'].includes(value),
+  },
+
+  // Prop per le elevazioni del bottone
+  elevated: { 
+    type: String,
+    default: null,
+    validator: (value) => ['1', '2', '3'].includes(value),
+  },
+
+  // Prop per definire la variante del bottone
+  // TODO: aggiungere/modificare classi
+  variant: { 
+    type: String,
+    default: 'primary',
+    validator: (value) => 
+      ['primary', 'secondary', 'tertiary', 'text', 'tonal', 'outlined', 'custom-primary', 'custom-secondary'].includes(value),
+  },
+  
   disabled: {
     type: Boolean
-  },
-  // icon: String,
-  variant: { // Prop per definire la variante del bottone
-    type: String,
-    default: 'primary', // Valore di default
-    validator: (value) => 
-      ['primary', 'secondary', 'tertiary', 'text', 'tonal'].includes(value),
-  },
-  size: { // Prop per la dimensione del bottone
-    type: String,
-    default: 'md', // 'md' (medium) come default
-    validator: (value) => ['sm', 'md', 'lg'].includes(value),
-  },
-  icon: { // Prop per passare il tracciato SVG dell'icona
+  },  
+
+  // Prop per passare il tracciato SVG dell'icona
+  icon: { 
     type: String,
     default: null,
   },
-  iconSize: { // Dimensione dell'icona
+
+  // Dimensione dell'icona
+  // TODO: forse dimensioni preconfiguate? xs, sm, md, lg, xl?
+  iconSize: { 
     type: [String, Number],
-    default: '1.2em', // Relativa alla dimensione del font del bottone, o un valore fisso es: 20
+    default: '1.2em',         // Relativa alla dimensione del font del bottone, o un valore fisso es: 20
   },
-  iconPosition: { // Posizione dell'icona rispetto al testo
+
+  // Posizione dell'icona rispetto al testo
+  iconPosition: { 
     type: String,
     default: 'left',
     validator: (value) => ['left', 'right'].includes(value),
@@ -74,14 +115,27 @@ const hasVisibleTextContent = computed(() => {
 });
 
 const buttonClasses = computed(() => {
-  const baseClasses = ['btn', `btn--${props.variant}`]; // Applica la classe base e la classe della variante
+  // Applica la classe base e la classe della variante
+  const baseClasses = ['btn', `btn--${props.variant}`]; 
 
-  if (props.size && props.size !== 'md') { // Aggiunge la classe per la dimensione solo se non è 'md' (default)
+  // Aggiunge la classe per il border-radius solo se non è 'round' (default)
+  if (props.shape && props.shape !== 'round') { 
+    baseClasses.push(`btn--${props.shape}`);
+  }
+
+  // Aggiunge la classe per elevated
+  if (props.elevated) { 
+    baseClasses.push(`btn--elevated-${props.elevated}`);
+  }
+
+  // Aggiunge la classe per la dimensione solo se non è 'md' (default)
+  if (props.size && props.size !== 'md') { 
     baseClasses.push(`btn--${props.size}`);
   }
 
+  // Aggiunge la classe .disabled per coerenza stilistica
   if (props.disabled) {
-    baseClasses.push('disabled'); // Aggiunge la classe .disabled per coerenza stilistica
+    baseClasses.push('disabled'); 
   }
   
   const utilityClasses = {
@@ -113,13 +167,16 @@ function handleClick(event) {
 <template>
   <component
     :is="tag"
-    :class="buttonClasses"
-    :type="buttonType"
-    :disabled="disabled"
-    :tabindex="disabled ? -1 : undefined"
     role="button"
+    :type="buttonType"
+    
     :href="(tag === 'a' && !disabled) ? href : null"
     :target="(tag === 'a' && !disabled) ? target : null"
+    
+    :class="buttonClasses"    
+    :disabled="disabled"
+    :tabindex="disabled ? -1 : undefined"
+        
     :aria-disabled="disabled ? 'true' : null"
     :aria-label="ariaLabel"
     v-bind="$attrs"

@@ -6,6 +6,7 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
 
 <template>
   <main>
+
     <div>
       <Button :icon="iconSettings">
         Primary
@@ -19,10 +20,20 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
     </div>
 
     <div>
+      <Button :icon="iconSettings" variant="primary-container">
+        Primary container
+      </Button>
+    </div>
+
+    <div>
       <Button 
+        tag="button"
+        type="submit"
         :icon="iconSettings"
         icon-size="2em"
-        size="lg">
+        size="lg"
+        elevated="3"
+      >
       </Button>
     </div>
 
@@ -32,7 +43,7 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
         href="#"
         target="_blank"
         variant="secondary"
-        :icon="iconExternalLink"
+        :icon="iconForward"
         icon-position="right"
         aria-label="Link Vue.js"
       >
@@ -46,7 +57,7 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
         href="#"
         target="_blank"
         variant="secondary"
-        :icon="iconExternalLink"
+        :icon="iconForward"
         icon-position="right"
         aria-label="Link Vue.js"
         disabled
@@ -78,9 +89,6 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
         Tonal disabled
       </Button>
     </div>
-
-    
-
   </main>
 </template>
 
@@ -92,4 +100,5 @@ main {
 div {
   margin: 0.5rem;
 }
+
 </style>
