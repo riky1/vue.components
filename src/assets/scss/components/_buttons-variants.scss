@@ -1,7 +1,7 @@
 @use './buttons-variables' as *;
 
 /* 
- * SECTION
+ * SECTION PRIMARY
  * Modificatore per Bottone Primario (.btn--primary)
  */
 
@@ -14,8 +14,8 @@
   // Stato disabilitato specifico per il primario (Material Design 3 per bottoni "filled")
   &:disabled,
   &.disabled {
-    background-color: rgba(var(--v-color-on-surface-rgb), 0.12);
-    color: rgba(var(--v-color-on-surface-rgb), 0.38);
+    background-color: var(--vc-color-primary-disabled);
+    color: var(--vc-color-on-primary-disabled);
     border-color: transparent;
   }
 }
@@ -27,10 +27,10 @@
  */
 
 .btn--primary-container {
-  background-color: var(--v-color-primary-container);
-  border-color: var(--v-color-primary-container);
+  background-color: var(--vc-color-primary-container);
+  border-color: var(--vc-color-primary-container);
   // Il colore del testo (on-primary) sarà usato anche per lo state layer (grazie a background-color: currentColor in ::before)
-  color: var(--v-color-on-primary-container);
+  color: var(--vc-color-on-primary-container);
 
   // Opzionale: se il bottone primario necessita di un anello di focus con un colore diverso
   // &:focus-visible {
@@ -40,8 +40,8 @@
   // Stato disabilitato specifico per il primario (Material Design 3 per bottoni "filled")
   &:disabled,
   &.disabled {
-    background-color: rgba(var(--v-color-on-surface-rgb), 0.12);
-    color: rgba(var(--v-color-on-surface-rgb), 0.38);
+    background-color: var(--vc-color-primary-disabled);
+    color: var(--vc-color-on-primary-disabled);
     border-color: transparent;
   }
 }
@@ -53,17 +53,17 @@
  */
 .btn--secondary {
   // Il colore del testo (primary) sarà usato anche per lo state layer
-  color: var(--v-color-secondary);
-  background-color: transparent;
-  border-color: var(--v-color-outline); // Bordo standard per outlined
+  color: var(--vc-color-on-secondary);
+  background-color: var(--vc-color-secondary);;
+  border-color: var(--vc-color-secondary); // Bordo standard per outlined
 
   // Per lo stato disabilitato, potremmo voler solo sbiadire il bordo e il testo
   &:disabled,
   &.disabled {
     // Per bottoni outlined/text, il testo e il bordo (se presente) usano on-surface con opacità 0.38
-    color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.38);
-    border-color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.12); // Bordo con on-surface al 12%
-    background-color: transparent;
+    background-color: var(--vc-color-primary-disabled);
+    color: var(--vc-color-on-primary-disabled);
+    border-color: transparent;
   }
 }
 // !SECTION
@@ -95,9 +95,9 @@
  * Modificatore per Bottone Tonal (.btn--tonal)
  */
 .btn--tonal {
-  background-color: var(--v-color-secondary-container);
+  background-color: var(--vc-color-secondary-container);
   // Il colore del testo (on-secondary-container) sarà usato anche per lo state layer
-  color: var(--v-color-on-secondary-container);
+  color: var(--vc-color-on-secondary-container);
   border-color: transparent;
 
   // Per lo stato disabilitato
@@ -116,8 +116,8 @@
  * Modificatore per Bottone con tema Terziario (.btn--tertiary)
  */
 .btn--tertiary {
-  background-color: var(--v-color-tertiary);
-  color: var(--v-color-on-tertiary); // Usato per testo e state layer
+  background-color: var(--vc-color-tertiary);
+  color: var(--vc-color-on-tertiary); // Usato per testo e state layer
   border-color: transparent; // O var(--v-color-tertiary-dark) per un bordo sottile
 
   // Lo state layer (::before) userà 'currentColor' (cioè --v-color-on-tertiary)
@@ -146,8 +146,7 @@
 .btn--sm {
   padding: $btn-padding-y-sm $btn-padding-x-sm;
   font-size: $btn-font-size-sm;
-  // Opzionale: aggiustare il border-radius se l'altezza cambia significativamente
-  // border-radius: 1rem; // Esempio per un bottone più piccolo
+  border-radius: $btn-border-radius-sm;
 
   // Per i text button piccoli, potrebbe essere necessario un padding orizzontale ancora minore
   &.btn--text {
@@ -159,8 +158,7 @@
 .btn--lg {
   padding: $btn-padding-y-lg $btn-padding-x-lg;
   font-size: $btn-font-size-lg;
-  // Opzionale: aggiustare il border-radius
-  // border-radius: 1.5rem; // Esempio per un bottone più grande
+  border-radius: $btn-border-radius-lg;
 }
 
 // !SECTION

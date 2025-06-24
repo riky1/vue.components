@@ -4,6 +4,8 @@
   --vc-color-on-primary: rgb(0 51 80);
   --vc-color-primary-container: rgb(3 75 113);
   --vc-color-on-primary-container: rgb(203 230 255);
+  --vc-color-primary-disabled: rgba(var(--vc-color-on-surface-rgb), 0.12);
+  --vc-color-on-primary-disabled: rgba(var(--vc-color-on-surface-rgb), 0.38);
 
   --vc-color-secondary: rgb(184 200 217);
   --vc-color-on-secondary: rgb(34 50 63);
@@ -23,7 +25,9 @@
   --vc-color-background: rgb(16 20 23);
   --vc-color-on-background: rgb(224 227 232);
   --vc-color-surface: rgb(16 20 23);
+  --vc-color-surface-rgb: 16, 20, 23;
   --vc-color-on-surface: rgb(224 227 232);
+  --vc-color-on-surface-rgb: 224, 227, 232;
   --vc-color-surface-variant: rgb(66 71 77);
   --vc-color-on-surface-variant: rgb(193 199 206);
 
@@ -72,10 +76,10 @@
 
 
   // Livelli di elevazione Material Design 3 (semplificati)
-  --v-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-  --v-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15); // Premuto
-  --v-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15); // Riposo
-  --v-elevation-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15); // Hover/Focus
+  --vc-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --vc-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15); // Premuto
+  --vc-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15); // Riposo
+  --vc-elevation-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15); // Hover/Focus
 }
 
 

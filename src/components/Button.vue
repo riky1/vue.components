@@ -64,7 +64,7 @@ const props = defineProps({
     type: String,
     default: 'primary',
     validator: (value) => 
-      ['primary', 'secondary', 'tertiary', 'text', 'tonal', 'outlined', 'custom-primary', 'custom-secondary'].includes(value),
+      ['primary', 'primary-container', 'secondary', 'tertiary', 'text', 'tonal', 'outlined', 'custom-primary', 'custom-secondary'].includes(value),
   },
   
   disabled: {
@@ -182,7 +182,7 @@ function handleClick(event) {
     v-bind="$attrs"
     @click="handleClick"
   >
-    <span v-if="hasIcon" class="btn__icon">
+    <i v-if="hasIcon" class="btn__icon">
       <slot v-if="$slots.icon" name="icon"></slot>
       <SvgIcon
         v-else-if="icon"
@@ -191,7 +191,7 @@ function handleClick(event) {
         type="mdi"
         aria-hidden="true"
       />
-    </span>
+    </i>
     <span v-if="hasVisibleTextContent" class="btn__text">
       <slot></slot> <!-- Contenuto di default del bottone (testo) -->
     </span>

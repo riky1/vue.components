@@ -14,6 +14,15 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
     </div>
 
     <div>
+      <Button>
+        <template #icon>
+          <svg-icon type="mdi" :path="iconSettings"></svg-icon>
+        </template>
+        Primary con icona slot
+      </Button>
+    </div>
+
+    <div>
       <Button :icon="iconSettings" icon-position="right" disabled>
         Primary Disabled
       </Button>
@@ -22,6 +31,12 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
     <div>
       <Button :icon="iconSettings" variant="primary-container">
         Primary container
+      </Button>
+    </div>
+
+    <div>
+      <Button :icon="iconSettings" variant="primary-container" disabled>
+        Primary container disabled
       </Button>
     </div>
 
@@ -68,13 +83,13 @@ import { iconForward, iconSettings } from '@/assets/icons/icons.js';
 
     <div>
       <Button variant="tertiary" :icon="iconForward">
-        Azione Terziaria Speciale
+        Tertiary
       </Button>
     </div>
 
     <div>
       <Button variant="tertiary" :icon="iconForward" disabled>
-        Terziaria disabled
+        Tertiary disabled
       </Button>
     </div>
 

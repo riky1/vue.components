@@ -1,5 +1,11 @@
 @use './buttons-variables' as *;
 
+:root {
+  --vc-elevation-base: none;
+  --vc-elevation-hover: none;
+  --vc-elevation-active: none;
+}
+
 /* 
  * SECTION
  * Classe Base per i Bottoni
@@ -7,42 +13,42 @@
 
 .btn {
   // Stili fondamentali
-  display: inline-flex;           // Permette di allineare icona e testo facilmente
-  align-items: center;            // Allinea verticalmente il contenuto
-  justify-content: center;        // Allinea orizzontalmente il contenuto
-  gap: 0.5em;                     // Spazio tra icona e testo. Usa 'em' per farlo scalare con la dimensione del font
-  padding: 0.625rem 1.25rem;      // ~10px vertical, 20px horizontal padding
-  font-family: inherit;           // Eredita il font dal contesto
-  font-size: 0.875rem;            // ~14px
-  font-weight: 500;               // Medium weight, comune per i bottoni
-  line-height: 1.5;               // Standard line height
+  display: inline-flex;                           // Permette di allineare icona e testo facilmente
+  align-items: center;                            // Allinea verticalmente il contenuto
+  justify-content: center;                        // Allinea orizzontalmente il contenuto
+  gap: 0.5em;                                     // Spazio tra icona e testo. Usa 'em' per farlo scalare con la dimensione del font
+  padding: $btn-padding-y-md $btn-padding-x-md;   // ~10px vertical, 20px horizontal padding
+  font-family: inherit;                           // Eredita il font dal contesto
+  font-size: $btn-font-size-md;                   // ~14px
+  font-weight: 500;                               // Medium weight, comune per i bottoni
+  line-height: 1.5;                               // Standard line height
   text-align: center;
-  text-decoration: none;          // Rimuove la sottolineatura dai link usati come bottoni
+  text-decoration: none;                          // Rimuove la sottolineatura dai link usati come bottoni
   vertical-align: middle;
   cursor: pointer;
-  user-select: none;              // Impedisce la selezione del testo del bottone
-  background-color: transparent;  // Sfondo di base, sarà sovrascritto dai modificatori
-  border: 1px solid transparent;  // Bordo di base, sarà sovrascritto
-  border-radius: 1.25rem;         // ~20px, per un look "pill" o completamente arrotondato (Material Design style)
-                                  // Adatto per un'altezza di bottone di circa 40px
+  user-select: none;                              // Impedisce la selezione del testo del bottone
+  background-color: transparent;                  // Sfondo di base, sarà sovrascritto dai modificatori
+  border: 1px solid transparent;                  // Bordo di base, sarà sovrascritto
+  border-radius: $btn-border-radius-md;           // ~20px, per un look "pill" o completamente arrotondato (Material Design style)
+                                                  // Adatto per un'altezza di bottone di circa 40px
 
   // Necessari per lo state layer e potenziali effetti ripple
   position: relative;
-  overflow: hidden;                   // Maschera lo state layer se esce dai bordi arrotondati
+  overflow: hidden;                               // Maschera lo state layer se esce dai bordi arrotondati
 
   // Elevazione e trasformazione di scala di default
-  box-shadow: var(--vc-elevation-base);   // Elevazione a riposo (come da tua definizione precedente)
-  transform: scale(1);                // Scala normale
-  will-change: transform, box-shadow; // Fixa il movimento verso l'alto dell'icona all pressione del button
+  box-shadow: var(--vc-elevation-base);        // Elevazione a riposo
+  transform: scale(1);                            // Scala normale
+  will-change: transform, box-shadow;             // Fixa il movimento verso l'alto dell'icona all pressione del button
 
   // Transizioni per un feedback fluido
-  // Usiamo cubic-bezier per un feeling più "Material"
+  // cubic-bezier per un feeling più "Material"
   transition:
     background-color 0.2s ease-out,
     border-color 0.2s ease-out,
     color 0.2s ease-out,
-    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), // Easing standard Material per l'elevazione
-    transform 0.15s cubic-bezier(0.4, 0, 1, 1);   // Easing standard Material per la scala
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),  // Easing standard Material per l'elevazione
+    transform 0.15s cubic-bezier(0.4, 0, 1, 1);     // Easing standard Material per la scala
 
   /*
    * ANCHOR - State Layer 
@@ -59,10 +65,10 @@
     // Il colore di sfondo dello state layer sarà il colore del testo del bottone
     // (es. --v-color-on-primary per un bottone primario)
     background-color: currentColor;
-    opacity: 0; // Inizialmente invisibile
-    transition: opacity 0.2s ease-out; // Transizione per l'opacità
-    pointer-events: none; // Non deve intercettare gli eventi del mouse
-    border-radius: inherit; // Assicura che lo state layer segua il border-radius del bottone
+    opacity: 0;                         // Inizialmente invisibile
+    transition: opacity 0.2s ease-out;  // Transizione per l'opacità
+    pointer-events: none;               // Non deve intercettare gli eventi del mouse
+    border-radius: inherit;             // Assicura che lo state layer segua il border-radius del bottone
   }
 
   /* 
@@ -72,8 +78,8 @@
   // Stili condivisi per :hover e :focus-visible (per accessibilità da tastiera)
   &:hover,
   &:focus-visible {
-    text-decoration: none; // Manteniamo la rimozione della sottolineatura
-    box-shadow: var(--vc-elevation-focus); // Elevazione per hover/focus (come da tua definizione)
+    text-decoration: none;                  // Manteniamo la rimozione della sottolineatura
+    box-shadow: var(--vc-elevation-hover);  // Elevazione per hover/focus (come da tua definizione)
   }
 
   // State layer per :hover
@@ -89,20 +95,21 @@
   // Stili specifici per :focus-visible (focus da tastiera)
   &:focus-visible {
     // Aggiunge un anello di focus esplicito per una migliore accessibilità
-    outline: 2px solid var(--v-color-outline); // Usa un colore di outline neutro e visibile
-    outline-offset: 2px;                       // Spazio tra bottone e anello di focus
+    outline: 2px solid var(--vc-color-outline);   // Usa un colore di outline neutro e visibile
+    outline-offset: 2px;                          // Spazio tra bottone e anello di focus
+    
     &::before {
-      opacity: $btn-focus-state-opacity; // Opacità specifica per lo state layer in focus
+      opacity: $btn-focus-state-opacity;          // Opacità specifica per lo state layer in focus
     }
   }
 
   // Stato :active (quando il bottone è premuto)
   &:active {
     box-shadow: var(--vc-elevation-active); // Elevazione per stato premuto (come da tua definizione)
-    transform: scale(0.97);           // Leggera riduzione di scala per feedback tattile
+    transform: scale(0.97);                   // Leggera riduzione di scala per feedback tattile
 
     &::before {
-      opacity: $btn-active-state-opacity; // Opacità specifica per lo state layer premuto
+      opacity: $btn-active-state-opacity;     // Opacità specifica per lo state layer premuto
     }
   }
 
@@ -112,8 +119,8 @@
     // Stile disabilitato generico (Material Design 3 per bottoni filled/tonal)
     // Usa --v-color-on-surface-rgb che dovresti aver definito in _root.scss
     // Questo stile è un buon fallback se una variante non definisce il suo :disabled specifico.
-    background-color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.12); // Fallback RGB se non definito
-    color: rgba(var(--v-color-on-surface-rgb, 229, 231, 235), 0.38);
+    background-color: var(--vc-color-surface-variant); // Fallback RGB se non definito
+    color: var(--vc-color-on-surface-variant);
     border-color: transparent; // I bottoni disabilitati filled/tonal di solito non hanno bordo
     cursor: not-allowed;
     pointer-events: none; // Impedisce qualsiasi interazione
@@ -125,21 +132,21 @@
   }
 
   &--elevated-1 {
-    --vc-elevation-base: var(--v-elevation-1);
-    --vc-elevation-focus: var(--v-elevation-2);
-    --vc-elevation-active: var(--v-elevation-1);
+    --vc-elevation-base: var(--vc-elevation-1);
+    --vc-elevation-hover: var(--vc-elevation-2);
+    --vc-elevation-active: var(--vc-elevation-1);
   }
 
   &--elevated-2 {    
-    --vc-elevation-base: var(--v-elevation-2);
-    --vc-elevation-focus: var(--v-elevation-3);
-    --vc-elevation-active: var(--v-elevation-1);
+    --vc-elevation-base: var(--vc-elevation-2);
+    --vc-elevation-hover: var(--vc-elevation-3);
+    --vc-elevation-active: var(--vc-elevation-1);
   }
 
   &--elevated-3 {
-    --vc-elevation-base: var(--v-elevation-3);
-    --vc-elevation-focus: var(--v-elevation-4);
-    --vc-elevation-active: var(--v-elevation-2);
+    --vc-elevation-base: var(--vc-elevation-3);
+    --vc-elevation-hover: var(--vc-elevation-4);
+    --vc-elevation-active: var(--vc-elevation-2);
   }
 
   /*
